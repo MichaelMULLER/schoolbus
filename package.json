@@ -16,7 +16,8 @@
     },
     "devDependencies" : {
         "domready" : "~0.2.11",
-        "ecstatic" : "~0.1.6"
+        "ecstatic" : "~0.1.6",
+        "browserify" : "~1.12.2"
     },
     "repository" : {
         "type" : "git",
