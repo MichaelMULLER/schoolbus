@@ -1,7 +1,7 @@
 {
-    "name" : "testling-driver",
+    "name" : "schoolbus",
     "version" : "0.0.0",
-    "description" : "drive browsers around",
+    "description" : "drive iframes around in browsers",
     "main" : "index.js",
     "bin" : {},
     "directories" : {
@@ -20,12 +20,14 @@
     },
     "repository" : {
         "type" : "git",
-        "url" : "git://github.com/substack/testling-driver.git"
+        "url" : "git://github.com/substack/schoolbus.git"
     },
-    "homepage" : "http://testling.com",
+    "homepage" : "https://github.com/substack/schoolbus",
     "keywords" : [
         "browser",
         "test",
+        "driver",
+        "iframe",
         "testling"
     ],
     "author" : {

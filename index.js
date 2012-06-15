@@ -22,7 +22,7 @@ module.exports = function (opts, vars, cb) {
 function Driver (opts, vars) {
     var self = this;
     self.vars = vars;
-    self.frame = document.createElement('iframe');
+    self.element = document.createElement('iframe');
     var queue = self.queue = { next : [], remote : [] };
     
     self.client = proto(function (remote, conn) {
@@ -43,11 +43,11 @@ function Driver (opts, vars) {
 Driver.prototype = new EventEmitter;
 
 Driver.prototype.appendTo = function (elem) {
-    return elem.appendChild(this.frame);
+    return elem.appendChild(this.element);
 };
 
 Driver.prototype.navigate = function (uri, cb) {
-    this.frame.setAttribute('src', uri);
+    this.element.setAttribute('src', uri);
     if (typeof cb === 'function') {
         // like .next() but skip the queue
         this.once('open', function () {
@@ -62,6 +62,7 @@ Driver.prototype.next = function (cb) {
         q.remote.shift().run(String(cb), vars);
     }
     else q.next.push(cb);
+    return this;
 };
 
 function bindListeners (self) {
@@ -71,7 +72,7 @@ function bindListeners (self) {
         try {
             var msg = json.parse(ev.data)
             if (msg[0] === '__testling_open') {
-                session = create(self.frame.contentWindow);
+                session = create(self.element.contentWindow);
                 self.emit('open', msg[1]);
             }
             else if (session && msg[0] === '__testling_message') {
