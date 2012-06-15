@@ -3,7 +3,7 @@ var domready = require('domready');
 
 domready(function () {
     var log = (function () {
-        var elem = document.querySelector('#console');
+        var elem = document.getElementById('console');
         return function (msg) {
             var div = document.createElement('div');
             div.textContent += msg;
