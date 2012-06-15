@@ -1,4 +1,4 @@
-var driver = require('../../');
+var schoolbus = require('../../');
 var domready = require('domready');
 
 domready(function () {
@@ -12,7 +12,7 @@ domready(function () {
     })();
     
     var uri = 'http://' + window.location.host + '/test-form/';
-    var d = driver(uri, function (win, $) {
+    var bus = schoolbus(uri, function (win, $) {
         log('href[0]=' + win.location.href);
         
         var form = $('#form')[0];
@@ -21,10 +21,10 @@ domready(function () {
         $('form').submit();
     }, { log : log });
     
-    d.next(function (win, $) {
+    bus.next(function (win, $) {
         log('href[1]=' + win.location.href);
         log($('#welcome p:first').text());
     });
     
-    d.appendTo(document.body);
+    bus.appendTo(document.body);
 });

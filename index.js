@@ -59,7 +59,7 @@ Driver.prototype.navigate = function (uri, cb) {
 Driver.prototype.next = function (cb) {
     var q = this.queue;
     if (q.remote.length) {
-        q.remote.shift().run(String(cb), vars);
+        q.remote.shift().run(String(cb), this.vars);
     }
     else q.next.push(cb);
     return this;
