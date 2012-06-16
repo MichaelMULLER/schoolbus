@@ -13,6 +13,7 @@ http.createServer(function (req, res) {
         req.on('end', function () {
             res.setHeader('content-type', 'text/html');
             var params = qs.parse(data);
+console.log('POST ' + JSON.stringify(params)); 
             if (params.login === 'testling' && params.passw === 'qwerty') {
                 fs.createReadStream(formDir + '/success.html').pipe(res);
             }

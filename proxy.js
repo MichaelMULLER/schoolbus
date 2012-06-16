@@ -31,7 +31,6 @@ var client = proto(function (remote, conn) {
 }).create();
 
 client.on('request', function (req) {
-console.log('request ' + json.stringify(req));
     bus.postMessage(
         json.stringify([ '__testling_message', req ]),
         '*',
@@ -41,7 +40,6 @@ console.log('request ' + json.stringify(req));
 
 if (window.parent !== window) {
     bus.receiveMessage(function (ev) {
-console.log('recv ' + ev.data);
         try {
             var msg = json.parse(ev.data);
             if (msg[0] === '__testling_message') client.handle(msg[1]);

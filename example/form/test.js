@@ -6,7 +6,8 @@ domready(function () {
         var elem = document.getElementById('console');
         return function (msg) {
             var div = document.createElement('div');
-            div.textContent += msg;
+            var txt = document.createTextNode(msg);
+            div.appendChild(txt);
             elem.appendChild(div);
         };
     })();
@@ -15,15 +16,20 @@ domready(function () {
     var bus = schoolbus(uri, function (win, $) {
         log('href[0]=' + win.location.href);
         
-        var form = $('#form')[0];
-        $('input[name=login]').val('testling');
-        $('input[name=passw]').val('qwerty');
-        $('form').submit();
+        $(function () {
+            var form = $('#form')[0];
+            $('input[name=login]').val('testling');
+            $('input[name=passw]').val('qwerty');
+            $('#form').submit();
+        });
     }, { log : log });
     
     bus.next(function (win, $) {
         log('href[1]=' + win.location.href);
-        log($('#welcome p:first').text());
+        
+        $(function () {
+            log($('#welcome p:first').text());
+        });
     });
     
     bus.appendTo(document.body);
