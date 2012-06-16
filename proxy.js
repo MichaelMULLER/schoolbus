@@ -26,7 +26,10 @@ var client = proto(function (remote, conn) {
             names.push(key);
             args.push(vars[key]);
         }
-        Function(names, 'return ' + src).apply(null, args)(window, $);
+        $(function () {
+            var fn = Function(names, 'return ' + src);
+            fn.apply(null, args)(window, $);
+        });
     };
 }).create();
 

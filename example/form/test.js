@@ -16,20 +16,15 @@ domready(function () {
     var bus = schoolbus(uri, function (win, $) {
         log('href[0]=' + win.location.href);
         
-        $(function () {
-            var form = $('#form')[0];
-            $('input[name=login]').val('testling');
-            $('input[name=passw]').val('qwerty');
-            $('#form').submit();
-        });
+        var form = $('#form')[0];
+        $('input[name=login]').val('testling');
+        $('input[name=passw]').val('qwerty');
+        $('#form').submit();
     }, { log : log });
     
     bus.next(function (win, $) {
         log('href[1]=' + win.location.href);
-        
-        $(function () {
-            log($('#welcome p:first').text());
-        });
+        log($('#welcome p:first').text());
     });
     
     bus.appendTo(document.body);
