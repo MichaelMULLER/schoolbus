@@ -1,6 +1,6 @@
 {
     "name" : "schoolbus",
-    "version" : "0.0.0",
+    "version" : "0.0.1",
     "description" : "drive browsers around with iframes",
     "main" : "index.js",
     "bin" : {},
