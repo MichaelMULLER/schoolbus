@@ -26,7 +26,9 @@ function Driver (opts, vars) {
     var queue = self.queue = { next : [], remote : [] };
     
     self.client = proto(function (remote, conn) {
+console.log('proto!!!'); 
         conn.on('ready', function () {
+console.log('ready!!!'); 
             if (queue.next.length) {
                 var cb = queue.next.shift();
                 remote.run(String(cb), vars);
